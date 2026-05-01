@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62802D30A88164D5491E9560 /* StatusFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C954DEA37E9EB4B438764FC3 /* StatusFormatter.swift */; };
+		8134265BA298223140972F7C /* StatusFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E1AFFB32E407F975FE9C2B /* StatusFormatterTests.swift */; };
 		C6F22015C08535C80BD50863 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B5A25EA2CB5B938912BFE /* AppDelegate.swift */; };
 		D4D8C88A5066DA862671710B /* UsageSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281CEB065F37853DC2CF408F /* UsageSnapshot.swift */; };
 		F68FF68BD0301D178260915A /* claude_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78321440DECD69BE532CD672 /* claude_barTests.swift */; };
@@ -25,8 +27,10 @@
 /* Begin PBXFileReference section */
 		1768AFB7565353262E5ECA40 /* claude-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "claude-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		281CEB065F37853DC2CF408F /* UsageSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageSnapshot.swift; sourceTree = "<group>"; };
+		43E1AFFB32E407F975FE9C2B /* StatusFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusFormatterTests.swift; sourceTree = "<group>"; };
 		78321440DECD69BE532CD672 /* claude_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = claude_barTests.swift; sourceTree = "<group>"; };
 		BC5B5A25EA2CB5B938912BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C954DEA37E9EB4B438764FC3 /* StatusFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusFormatter.swift; sourceTree = "<group>"; };
 		C9DA7ECED234A1C5C77403BC /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		DA3323E8074CEADEBD3C784E /* claude-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "claude-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1A991209E4AD4D158007B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 			children = (
 				BC5B5A25EA2CB5B938912BFE /* AppDelegate.swift */,
 				EB1A991209E4AD4D158007B3 /* Info.plist */,
+				C954DEA37E9EB4B438764FC3 /* StatusFormatter.swift */,
 				281CEB065F37853DC2CF408F /* UsageSnapshot.swift */,
 			);
 			name = "claude-bar";
@@ -65,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				78321440DECD69BE532CD672 /* claude_barTests.swift */,
+				43E1AFFB32E407F975FE9C2B /* StatusFormatterTests.swift */,
 				1AA81930C990102417BCA86F /* Fixtures */,
 			);
 			name = "claude-barTests";
@@ -158,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6F22015C08535C80BD50863 /* AppDelegate.swift in Sources */,
+				62802D30A88164D5491E9560 /* StatusFormatter.swift in Sources */,
 				D4D8C88A5066DA862671710B /* UsageSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8134265BA298223140972F7C /* StatusFormatterTests.swift in Sources */,
 				F68FF68BD0301D178260915A /* claude_barTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
