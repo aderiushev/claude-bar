@@ -136,7 +136,15 @@ struct UsageSnapshot: Sendable {
 }
 ```
 
-- [ ] **Step 2: Build to verify**
+- [ ] **Step 2: Regenerate Xcode project (required after adding new source files)**
+
+```bash
+xcodegen generate
+```
+
+Expected: no errors.
+
+- [ ] **Step 3: Build to verify**
 
 ```bash
 xcodebuild -scheme claude-bar -configuration Debug build 2>&1 | tail -3
@@ -144,10 +152,10 @@ xcodebuild -scheme claude-bar -configuration Debug build 2>&1 | tail -3
 
 Expected: `** BUILD SUCCEEDED **`
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git add Sources/claude-bar/UsageSnapshot.swift
+git add Sources/claude-bar/UsageSnapshot.swift claude-bar.xcodeproj
 git commit -m "feat: add UsageSnapshot data model"
 ```
 
@@ -203,7 +211,15 @@ final class StatusFormatterTests: XCTestCase {
 }
 ```
 
-- [ ] **Step 2: Run tests to confirm they fail (StatusFormatter doesn't exist yet)**
+- [ ] **Step 2: Regenerate Xcode project (picks up new test + source files)**
+
+```bash
+xcodegen generate
+```
+
+Expected: no errors.
+
+- [ ] **Step 3: Run tests to confirm they fail (StatusFormatter doesn't exist yet)**
 
 ```bash
 xcodebuild -scheme claude-bar -configuration Debug test 2>&1 | grep -E "FAIL|error:|BUILD FAILED" | head -10
@@ -211,7 +227,7 @@ xcodebuild -scheme claude-bar -configuration Debug test 2>&1 | grep -E "FAIL|err
 
 Expected: `BUILD FAILED` — `StatusFormatter` not found.
 
-- [ ] **Step 3: Write `StatusFormatter.swift`**
+- [ ] **Step 4: Write `StatusFormatter.swift`**
 
 ```swift
 // Sources/claude-bar/StatusFormatter.swift
@@ -237,7 +253,7 @@ enum StatusFormatter {
 }
 ```
 
-- [ ] **Step 4: Run tests to confirm they pass**
+- [ ] **Step 5: Run tests to confirm they pass**
 
 ```bash
 xcodebuild -scheme claude-bar -configuration Debug test 2>&1 | grep -E "PASS|FAIL|Test Suite" | tail -10
@@ -245,10 +261,10 @@ xcodebuild -scheme claude-bar -configuration Debug test 2>&1 | grep -E "PASS|FAI
 
 Expected: All 6 tests pass. `** TEST SUCCEEDED **`
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add Sources/claude-bar/StatusFormatter.swift Tests/claude-barTests/StatusFormatterTests.swift
+git add Sources/claude-bar/StatusFormatter.swift Tests/claude-barTests/StatusFormatterTests.swift claude-bar.xcodeproj
 git commit -m "feat: add StatusFormatter with unit tests"
 ```
 
@@ -328,7 +344,15 @@ final class UsageReaderTests: XCTestCase {
 }
 ```
 
-- [ ] **Step 3: Run tests to confirm they fail**
+- [ ] **Step 3: Regenerate Xcode project (picks up new test + source files)**
+
+```bash
+xcodegen generate
+```
+
+Expected: no errors.
+
+- [ ] **Step 4: Run tests to confirm they fail**
 
 ```bash
 xcodebuild -scheme claude-bar -configuration Debug test 2>&1 | grep -E "error:|BUILD FAILED" | head -5
@@ -379,7 +403,7 @@ Expected: All 10 tests pass. `** TEST SUCCEEDED **`
 - [ ] **Step 6: Commit**
 
 ```bash
-git add Sources/claude-bar/UsageReader.swift Tests/claude-barTests/UsageReaderTests.swift Tests/claude-barTests/Fixtures/
+git add Sources/claude-bar/UsageReader.swift Tests/claude-barTests/UsageReaderTests.swift Tests/claude-barTests/Fixtures/ claude-bar.xcodeproj
 git commit -m "feat: add UsageReader with unit tests"
 ```
 
