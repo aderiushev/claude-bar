@@ -31,3 +31,4 @@ targets:
         SWIFT_VERSION: "6.0"
         BUNDLE_LOADER: "$(TEST_HOST)"
         TEST_HOST: "$(BUILT_PRODUCTS_DIR)/claude-bar.app/Contents/MacOS/claude-bar"
+        GENERATE_INFOPLIST_FILE: YES

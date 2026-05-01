@@ -44,5 +44,5 @@ No UI beyond the status item title. No popover or menu required for the initial 
 
 - Minimum deployment target: macOS 13
 - No third-party dependencies — Foundation + AppKit only
-- All file I/O is synchronous and happens off the main thread (use `DispatchQueue.global()`)
+- All file I/O is synchronous and runs off the main actor via `Task.detached(priority: .utility)`
 - `UsageSnapshot` is a `struct` with all optional fields; missing data degrades gracefully (show `--` instead of crashing)

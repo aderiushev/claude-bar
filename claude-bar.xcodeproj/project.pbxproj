@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C6F22015C08535C80BD50863 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B5A25EA2CB5B938912BFE /* AppDelegate.swift */; };
+		F68FF68BD0301D178260915A /* claude_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78321440DECD69BE532CD672 /* claude_barTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,12 +23,22 @@
 
 /* Begin PBXFileReference section */
 		1768AFB7565353262E5ECA40 /* claude-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "claude-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78321440DECD69BE532CD672 /* claude_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = claude_barTests.swift; sourceTree = "<group>"; };
 		BC5B5A25EA2CB5B938912BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9DA7ECED234A1C5C77403BC /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		DA3323E8074CEADEBD3C784E /* claude-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "claude-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1A991209E4AD4D158007B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		1AA81930C990102417BCA86F /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				C9DA7ECED234A1C5C77403BC /* .gitkeep */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
 		2A94BA7A26E2F8FCF57BDFEA = {
 			isa = PBXGroup;
 			children = (
@@ -50,6 +61,8 @@
 		76382ED334EBD6461FF13BA0 /* claude-barTests */ = {
 			isa = PBXGroup;
 			children = (
+				78321440DECD69BE532CD672 /* claude_barTests.swift */,
+				1AA81930C990102417BCA86F /* Fixtures */,
 			);
 			name = "claude-barTests";
 			path = "Tests/claude-barTests";
@@ -149,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F68FF68BD0301D178260915A /* claude_barTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +276,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -342,6 +357,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
