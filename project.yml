@@ -1,0 +1,33 @@
+name: claude-bar
+options:
+  bundleIdPrefix: com.aderiushev
+  deploymentTarget:
+    macOS: "13.0"
+targets:
+  claude-bar:
+    type: application
+    platform: macOS
+    sources: Sources/claude-bar
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.aderiushev.claude-bar
+        SWIFT_VERSION: "6.0"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_HARDENED_RUNTIME: YES
+    info:
+      path: Sources/claude-bar/Info.plist
+      properties:
+        CFBundleDisplayName: claude-bar
+        LSUIElement: YES
+  claude-barTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: Tests/claude-barTests
+    dependencies:
+      - target: claude-bar
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/claude-bar.app/Contents/MacOS/claude-bar"
