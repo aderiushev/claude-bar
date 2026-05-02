@@ -31,7 +31,7 @@ xcodebuild -scheme claude-bar -configuration Debug test
 
 ## Architecture
 
-Single-target Swift app, no storyboard, entry point via `@main` on `AppDelegate`.
+Single-target Swift app, no storyboard, entry point via `main.swift` (explicit `setActivationPolicy(.accessory)` before `NSApplication.run()` — required on macOS 26).
 
 - **AppDelegate** — creates `NSStatusItem`, owns the menu bar icon and title label; runs the 30 s refresh loop via a Swift `Task` and restarts on wake-from-sleep
 - **UsageReader** — `enum` namespace; reads and parses `usage-cache.json` from disk; returns a `UsageSnapshot` value type

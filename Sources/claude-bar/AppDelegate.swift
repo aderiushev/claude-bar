@@ -4,6 +4,8 @@ import AppKit
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
     private var refreshLoop: Task<Void, Never>?
+    private let cacheURL = FileManager.default.homeDirectoryForCurrentUser
+        .appending(path: ".claude/usage-cache.json")
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -46,11 +48,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func updateTitle() async {
-        let cacheURL = FileManager.default.homeDirectoryForCurrentUser
-            .appending(path: ".claude/usage-cache.json")
+        let url = cacheURL
         let snapshot = await Task.detached(priority: .utility) {
-            UsageReader.readOrEmpty(from: cacheURL)
+            UsageReader.readOrEmpty(from: url)
         }.value
-        statusItem.button?.title = StatusFormatter.format(snapshot)
+        let title = StatusFormatter.format(snapshot)
+        if statusItem.button?.title != title {
+            statusItem.button?.title = title
+        }
     }
 }
