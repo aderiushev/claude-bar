@@ -33,10 +33,9 @@ xcodebuild -scheme claude-bar -configuration Debug test
 
 Single-target Swift app, no storyboard, entry point via `@main` on `AppDelegate`.
 
-- **AppDelegate** — creates `NSStatusItem`, owns the menu bar icon and title label; starts the refresh timer
-- **UsageReader** — reads and parses `usage-cache.json`, `settings.json`; returns a `UsageSnapshot` value type
-- **StatusFormatter** — pure function: `UsageSnapshot → String`; produces the compact status string shown in the menu bar
-- **RefreshTimer** — wraps a `Timer` that calls `UsageReader` + `StatusFormatter` every 30 s and on wake-from-sleep
+- **AppDelegate** — creates `NSStatusItem`, owns the menu bar icon and title label; runs the 30 s refresh loop via a Swift `Task` and restarts on wake-from-sleep
+- **UsageReader** — `enum` namespace; reads and parses `usage-cache.json` from disk; returns a `UsageSnapshot` value type
+- **StatusFormatter** — `enum` namespace; pure function `UsageSnapshot → String`; produces the compact status string shown in the menu bar
 
 No UI beyond the status item title. No popover or menu required for the initial version.
 

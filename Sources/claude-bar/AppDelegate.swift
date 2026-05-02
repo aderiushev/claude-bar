@@ -32,13 +32,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         refreshLoop = Task {
             while !Task.isCancelled {
                 await updateTitle()
-                try? await Task.sleep(for: .seconds(30))
+                do {
+                    try await Task.sleep(for: .seconds(30))
+                } catch {
+                    break
+                }
             }
         }
     }
 
     @objc private func handleWake() {
-        startRefreshLoop()
+        Task { @MainActor in startRefreshLoop() }
     }
 
     private func updateTitle() async {
