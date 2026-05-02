@@ -7,7 +7,9 @@ targets:
   claude-bar:
     type: application
     platform: macOS
-    sources: Sources/claude-bar
+    sources:
+      - Sources/claude-bar
+      - Resources/Assets.xcassets
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aderiushev.claude-bar
@@ -15,6 +17,7 @@ targets:
         MACOSX_DEPLOYMENT_TARGET: "13.0"
         CODE_SIGN_STYLE: Automatic
         ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     info:
       path: Sources/claude-bar/Info.plist
       properties:
