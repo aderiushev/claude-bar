@@ -1,6 +1,5 @@
 import AppKit
 
-@main
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
@@ -8,6 +7,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem.autosaveName = "com.aderiushev.claude-bar"
         statusItem.button?.title = "…"
         statusItem.menu = makeMenu()
 
