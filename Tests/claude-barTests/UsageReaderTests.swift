@@ -23,11 +23,12 @@ final class UsageReaderTests: XCTestCase {
         var comps = DateComponents()
         comps.year = 2026; comps.month = 5; comps.day = 6
         comps.hour = 20; comps.minute = 59; comps.second = 59
+        comps.nanosecond = 865_663_000
         comps.timeZone = TimeZone(identifier: "UTC")
         let expected = cal.date(from: comps)!
         XCTAssertEqual(snapshot.weekResets!.timeIntervalSince1970,
                        expected.timeIntervalSince1970,
-                       accuracy: 1.0)
+                       accuracy: 0.001)
     }
 
     func testMissingFileReturnsEmptySnapshot() {

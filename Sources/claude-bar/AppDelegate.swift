@@ -42,7 +42,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func handleWake() {
-        Task { @MainActor in startRefreshLoop() }
+        startRefreshLoop()
     }
 
     private func updateTitle() async {
