@@ -10,8 +10,10 @@ enum StatusFormatter {
         return "\(week)→\(projected) [\(timeStr)]"
     }
 
+    private static let windowSeconds: TimeInterval = 7 * 24 * 3600
+
     private static func projectedPct(current: Int, resets: Date, now: Date) -> Int {
-        let weekStart = resets.addingTimeInterval(-7 * 24 * 3600)
+        let weekStart = resets.addingTimeInterval(-windowSeconds)
         let elapsedHours = now.timeIntervalSince(weekStart) / 3600
         let remainingHours = max(resets.timeIntervalSince(now) / 3600, 0)
         guard elapsedHours > 0.5 else { return current }
