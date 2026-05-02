@@ -1,20 +1,37 @@
 import Foundation
 
-enum StatusFormatter {
-    static func format(_ snapshot: UsageSnapshot, now: Date = Date()) -> String {
-        guard let week = snapshot.weekPct, let resets = snapshot.weekResets else {
-            return "--"
+enum DisplayMode: String {
+    case week, session
+
+    var windowSeconds: TimeInterval {
+        switch self {
+        case .week:    return 7 * 24 * 3600
+        case .session: return 24 * 3600
         }
-        let timeStr = timeLabel(secondsUntil: resets.timeIntervalSince(now))
-        let projected = projectedPct(current: week, resets: resets, now: now)
-        return "\(week)→\(projected) [\(timeStr)]"
+    }
+}
+
+enum StatusFormatter {
+    static func format(_ snapshot: UsageSnapshot, mode: DisplayMode = .week, now: Date = Date()) -> String {
+        switch mode {
+        case .week:
+            guard let pct = snapshot.weekPct, let resets = snapshot.weekResets else { return "--" }
+            return formatted(pct: pct, resets: resets, window: mode.windowSeconds, now: now)
+        case .session:
+            guard let pct = snapshot.sessionPct, let resets = snapshot.sessionResets else { return "--" }
+            return formatted(pct: pct, resets: resets, window: mode.windowSeconds, now: now)
+        }
     }
 
-    private static let windowSeconds: TimeInterval = 7 * 24 * 3600
+    private static func formatted(pct: Int, resets: Date, window: TimeInterval, now: Date) -> String {
+        let timeStr = timeLabel(secondsUntil: resets.timeIntervalSince(now))
+        let projected = projectedPct(current: pct, resets: resets, window: window, now: now)
+        return "\(pct)→\(projected) [\(timeStr)]"
+    }
 
-    private static func projectedPct(current: Int, resets: Date, now: Date) -> Int {
-        let weekStart = resets.addingTimeInterval(-windowSeconds)
-        let elapsedHours = now.timeIntervalSince(weekStart) / 3600
+    private static func projectedPct(current: Int, resets: Date, window: TimeInterval, now: Date) -> Int {
+        let periodStart = resets.addingTimeInterval(-window)
+        let elapsedHours = now.timeIntervalSince(periodStart) / 3600
         let remainingHours = max(resets.timeIntervalSince(now) / 3600, 0)
         guard elapsedHours > 0.5 else { return current }
         let rate = Double(current) / elapsedHours
