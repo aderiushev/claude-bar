@@ -20,9 +20,13 @@ enum UsageReader {
         (try? read(from: url)) ?? UsageSnapshot(sessionPct: nil, weekPct: nil, weekResets: nil)
     }
 
-    private static func parseDate(_ string: String) -> Date? {
+    nonisolated(unsafe) private static let iso8601: ISO8601DateFormatter = {
         let fmt = ISO8601DateFormatter()
         fmt.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return fmt.date(from: string)
+        return fmt
+    }()
+
+    private static func parseDate(_ string: String) -> Date? {
+        iso8601.date(from: string)
     }
 }
