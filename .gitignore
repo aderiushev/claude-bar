@@ -11,3 +11,15 @@ build/
 
 # macOS
 .DS_Store
+
+# Distribution artifacts (ship via GitHub Releases, not git)
+*.dmg
+
+# IDE
+.idea/
+
+# Profiling / coverage
+*.profraw
+
+# Local screenshots
+img*.png

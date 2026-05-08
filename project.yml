@@ -23,6 +23,8 @@ targets:
       properties:
         CFBundleDisplayName: claude-bar
         LSUIElement: YES
+        CFBundleShortVersionString: "2.0.5"
+        CFBundleVersion: "9"
   claude-barTests:
     type: bundle.unit-test
     platform: macOS
