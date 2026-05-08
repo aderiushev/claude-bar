@@ -4,8 +4,7 @@ set -euo pipefail
 APP_NAME="claude-bar"
 SIGN_IDENTITY="Developer ID Application: Aleksey Deryushev (32RFJTG8M6)"
 KEYCHAIN_PROFILE="claude-bar-notary"
-VERSION=$(date +%Y%m%d)
-DMG_NAME="${APP_NAME}-${VERSION}.dmg"
+DMG_NAME="${APP_NAME}.dmg"
 BUILD_DIR="$(pwd)/build/Release"
 STAGING=$(mktemp -d)
 
